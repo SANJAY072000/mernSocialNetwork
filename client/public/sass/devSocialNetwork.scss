@@ -1,0 +1,80 @@
+// importing mixins file
+@import "mixins";
+
+
+// defining color variables
+$rockingRed:(
+rr1:#FF3031,
+rr2:#BA2F16,
+rr3:#AE1438,
+);
+$beautifulBlue:(
+bb1:#3498DB,
+bb2:#4834DF,
+bb3:#25CCF7,
+);
+$golfGreen:(
+gg1:#019031,
+gg2:#45CE30,
+gg3:#218F76,
+);
+$freshYellow:(
+fy1:#EEC213,
+fy2:#F3B431,
+fy3:#FBD28B,
+);
+
+
+// functions to get color values
+@function rr($a){
+  @return map-get($rockingRed,$a);
+}
+@function bb($a){
+  @return map-get($beautifulBlue,$a);
+}
+@function gg($a){
+  @return map-get($golfGreen,$a);
+}
+@function fy($a){
+  @return map-get($freshYellow,$a);
+}
+
+
+// media queries go here
+// Extra small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+body{
+
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  body{
+
+  }
+}
+
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  body{
+
+  }
+}
+
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  body{
+
+  }
+}
+
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  body{
+
+  }
+}
