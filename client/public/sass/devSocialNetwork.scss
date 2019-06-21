@@ -44,7 +44,44 @@ fy3:#FBD28B,
 // Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 body{
-
+  .navbar{
+    @include navbar();
+  }
+.lp{
+  @include lp();
+  h1{
+    @include h1();
+  }
+  p{
+    @include p();
+  }
+}
+#rgt{
+  h1{
+  @include rgt-h1();
+  }
+  p{
+    @include rgt-p();
+  }
+  label{
+    @include rgt-label();
+  }
+  .form-group{
+    margin-top: 60px;
+  }
+  .dvn{
+    @include rgt-dvn();
+  }
+  input{
+    @include rgt-input();
+  }
+  img{
+    @include rgt-img();
+  }
+  .btn{
+    @include rgt-btn();
+  }
+}
 }
 
 
@@ -59,7 +96,18 @@ body{
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   body{
-
+    .navbar{
+      @include navbar();
+    }
+    .lp{
+    @include lp-md();
+    h1{
+      @include h1-md();
+    }
+    p{
+      @include p-md();
+    }
+    }
   }
 }
 

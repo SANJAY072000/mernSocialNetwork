@@ -1,0 +1,76 @@
+@mixin navbar(){
+  position: relative;
+  z-index: 2;
+}
+@mixin lp(){
+  background: url('../images/landingpage.jpg')
+  no-repeat center center fixed;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+@mixin h1(){
+  font-family: 'Slabo 27px', serif;
+}
+@mixin p(){
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2em;
+}
+@mixin lp-md(){
+  background: url('../images/lpmd.jpg')
+  no-repeat center center fixed;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+@mixin h1-md(){
+  font-family: 'Raleway', sans-serif;
+  font-size: 3em !important;
+  margin-top: 90px !important;
+}
+@mixin p-md(){
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5em;
+}
+@mixin rgt-h1(){
+  background: linear-gradient(#833ab4,#fd1d1d,#FF0080);
+  -webkit-background-clip:text;
+  color: transparent;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: bolder;
+}
+@mixin rgt-p(){
+  font-family: 'Catamaran', sans-serif;
+  font-size: 1.2em;
+  font-weight: bolder;
+}
+@mixin rgt-label(){
+  font-size: 1.4em;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: bolder;
+}
+@mixin rgt-dvn(){
+  background: linear-gradient(#009FFF,#ec2F4B);
+  -webkit-background-clip:text;
+  color: transparent;
+  font-family: 'Dancing Script', cursive;
+}
+@mixin rgt-input(){
+  height: 45px;
+  font-size: 1.4em;
+}
+@mixin rgt-img(){
+  width: 100px;
+  height: 100px;
+}
+@mixin rgt-btn(){
+  margin-top: 70px;
+  font-size: 1.3em;
+  font-family: 'Bree Serif', serif;
+}

@@ -1,3 +1,69 @@
+body .navbar {
+  position: relative;
+  z-index: 2; }
+body .lp {
+  background: url("../images/landingpage.jpg") no-repeat center center fixed;
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1; }
+  body .lp h1 {
+    font-family: 'Slabo 27px', serif; }
+  body .lp p {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2em; }
+body #rgt h1 {
+  background: linear-gradient(#833ab4, #fd1d1d, #FF0080);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: bolder; }
+body #rgt p {
+  font-family: 'Catamaran', sans-serif;
+  font-size: 1.2em;
+  font-weight: bolder; }
+body #rgt label {
+  font-size: 1.4em;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: bolder; }
+body #rgt .form-group {
+  margin-top: 60px; }
+body #rgt .dvn {
+  background: linear-gradient(#009FFF, #ec2F4B);
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: 'Dancing Script', cursive; }
+body #rgt input {
+  height: 45px;
+  font-size: 1.4em; }
+body #rgt img {
+  width: 100px;
+  height: 100px; }
+body #rgt .btn {
+  margin-top: 70px;
+  font-size: 1.3em;
+  font-family: 'Bree Serif', serif; }
 
+@media (min-width: 768px) {
+  body .navbar {
+    position: relative;
+    z-index: 2; }
+  body .lp {
+    background: url("../images/lpmd.jpg") no-repeat center center fixed;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1; }
+    body .lp h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 3em !important;
+      margin-top: 90px !important; }
+    body .lp p {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.5em; } }
 
 /*# sourceMappingURL=devSocialNetwork.css.map */
