@@ -2,7 +2,28 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 
 export default class Navbar extends Component {
+  onClick(){
+    localStorage.removeItem('usertoken');
+    this.props.history.push('/login');
+  }
   render(){
+    const loginLink=(
+        <ul className="navbar-nav ml-auto">
+        <li className="nav-item active">
+        <Link to="/register" className="nav-link">Sign Up</Link>
+        </li>
+        <li className="nav-item active">
+        <Link to="/login" className="nav-link">Login</Link>
+        </li>
+        </ul>),
+        userLink=(<ul className="navbar-nav ml-auto">
+     <li className="nav-item active">
+     <Link to="/profiles" className="nav-link">Posts</Link>
+     </li>
+  <li className="nav-item active">
+  <button className="nav-link btn btn-link" onClick={this.onClick.bind(this)}>Logout</button>
+  </li>
+  </ul>);
     return(
       <div>
       <nav className="navbar navbar-expand navbar-dark bg-info">
@@ -13,14 +34,7 @@ export default class Navbar extends Component {
   <Link to="/profiles" className="nav-link">Developers</Link>
   </li>
 </ul>
-  <ul className="navbar-nav ml-auto">
-    <li className="nav-item active">
-    <Link to="/register" className="nav-link">Sign Up</Link>
-    </li>
-    <li className="nav-item active">
-    <Link to="/login" className="nav-link">Login</Link>
-    </li>
-  </ul>
+  {localStorage.getItem('usertoken')?userLink:loginLink}
 </div>
 </nav>
       </div>

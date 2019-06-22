@@ -20,7 +20,8 @@ mongoose.connect(dbstr,{useNewUrlParser:true})
 
 
 // fetching all the routes
-const auth=require('./routes/api/auth');
+const auth=require('./routes/api/auth'),
+profile=require('./routes/api/profile');
 
 
 // configuring middleware for bodyparser
@@ -36,8 +37,13 @@ app.use(cors());
 app.use(passport.initialize());
 
 
+// configuring the jwt strategy
+require('./strategies/jsonwtStrategy')(passport);
+
+
 // configuring all the routes
 app.use('/api/auth',auth);
+app.use('/api/profile',profile);
 
 
 // starting the server

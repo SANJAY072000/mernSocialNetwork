@@ -1,12 +1,12 @@
 import React,{Component} from 'react';
 import Navbar from './Navbar';
 
-export default class ProfileList extends Component {
+export default class Profile extends Component {
   render(){
     return(
       <div>
-        <Navbar/>
-        Welcome to ProfileList component.
+      <Navbar/>
+        Welcome to Profile component.
       </div>
     );
   }
