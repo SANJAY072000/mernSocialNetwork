@@ -4,6 +4,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import ProfileList from './components/ProfileList';
 import Profile from './components/Profile';
+import Dashboard from './components/Dashboard';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 
 export default class App extends Component {
@@ -16,6 +17,7 @@ export default class App extends Component {
       <Route path="/login" component={Login}/>
       <Route path="/profiles" component={ProfileList}/>
       <Route path="/create" component={Profile}/>
+      <Route path="/dashboard" component={Dashboard}/>
 
     </div>
   </Router>

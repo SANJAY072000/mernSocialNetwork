@@ -1,10 +1,27 @@
 import React,{Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link,Redirect} from 'react-router-dom';
 
 export default class Navbar extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+     redirect:false
+    };
+  }
+  renderRedirect(){
+    if (this.state.redirect) {
+    return <Redirect to='/' />
+    }
+  }
+  setRedirect(){
+    this.setState({
+      redirect: true
+    });
+    this.renderRedirect();
+  }
   onClick(){
     localStorage.removeItem('usertoken');
-    this.props.history.push('/login');
+    this.setRedirect();
   }
   render(){
     const loginLink=(
@@ -27,7 +44,7 @@ export default class Navbar extends Component {
     return(
       <div>
       <nav className="navbar navbar-expand navbar-dark bg-info">
-<Link to="/" className="navbar-brand">DevNetwork</Link>
+<Link to='/' className="navbar-brand">DevNetwork</Link>
 <div className="collapse navbar-collapse" id="navbarSupportedContent">
 <ul className="navbar-nav mr-auto">
   <li className="nav-item active ml-3">

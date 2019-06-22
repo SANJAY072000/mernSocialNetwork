@@ -63,7 +63,20 @@ export default class Login extends Component {
             });
             else{
               localStorage.setItem('usertoken',res.data.token);
-              this.props.history.push('/create');
+              axios({
+                url:'/api/profile/dashboard',
+                headers:{
+                  Authorization:localStorage.getItem('usertoken')
+                }
+              })
+              .then(res=>{
+                if(res.data.profilenotfound==='No Profile yet')
+                this.props.history.push('/create');
+                else
+                this.props.history.push('/dashboard');
+              })
+              .catch(err=>console.log(err));
+              
               this.setState({
                 email:'',
                 password:'',
