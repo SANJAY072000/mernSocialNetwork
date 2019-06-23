@@ -12,7 +12,8 @@ export default class Register extends Component {
       cpEmpty:false,
       isRegistered:false,
       passLength:false,
-      cpCheck:false
+      cpCheck:false,
+      isSent:false
     }),7000);
   }
   constructor(props){
@@ -28,7 +29,8 @@ export default class Register extends Component {
       cpEmpty:false,
       isRegistered:false,
       passLength:false,
-      cpCheck:false
+      cpCheck:false,
+      isSent:false
     };
     this.onChange=this.onChange.bind(this);
     this.onSubmit=this.onSubmit.bind(this);
@@ -61,7 +63,7 @@ export default class Register extends Component {
         isRegistered:false,
         passLength:true
       });
-      else if(this.state.cp!==this.state.password)
+    else if(this.state.cp!==this.state.password)
       this.setState({
         nameEmpty:false,
         emailEmpty:false,
@@ -87,7 +89,8 @@ export default class Register extends Component {
                cpEmpty:false,
                isRegistered:true,
                passLength:false,
-               cpCheck:false
+               cpCheck:false,
+               isSent:false
              });
            }
            else{
@@ -102,7 +105,8 @@ export default class Register extends Component {
              cpEmpty:false,
              isRegistered:false,
              passLength:false,
-             cpCheck:false
+             cpCheck:false,
+             isSent:true
            });
            this.props.history.push('/login');
            }
@@ -155,6 +159,9 @@ export default class Register extends Component {
   </div>
   <button type="submit" className="btn btn-outline-primary mb-5 btn-block"><i className="fa fa-user-plus" aria-hidden="true"></i> Sign Up</button>
 </form>
+<div className={this.state.isSent?"alert alert-success mt-5":"alert alert-success mt-5 d-none"} role="alert">
+  An email is sent to you !
+</div>
 </div>
 <h6 className="text-center font-weight-bold mb-5">Already a member ?
 <Link to="/login" className="text-primary mx-1"> Login </Link> to your account

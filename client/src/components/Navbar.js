@@ -1,11 +1,28 @@
 import React,{Component} from 'react';
 import {Link,Redirect} from 'react-router-dom';
+import axios from 'axios';
 
 export default class Navbar extends Component {
+  componentDidMount(){
+    axios({
+      url:'/api/profile/dashboard',
+      headers:{
+        Authorization:localStorage.getItem('usertoken')
+      }
+    })
+    .then(res=>{
+      if(res.data.profilenotfound==='No Profile yet')
+      this.setState({url:'images/upload/man.png'});
+     else if(res.data.pic!=='images/upload/man.png')
+      this.setState({url:res.data.pic});
+    })
+    .catch(err=>console.log(err));
+  }
   constructor(props){
     super(props);
     this.state = {
-     redirect:false
+     redirect:false,
+     url:'images/upload/man.png'
     };
   }
   renderRedirect(){
@@ -33,12 +50,16 @@ export default class Navbar extends Component {
         <Link to="/login" className="nav-link">Login</Link>
         </li>
         </ul>),
-        userLink=(<ul className="navbar-nav ml-auto">
+        userLink=(<ul className="navbar-nav">
      <li className="nav-item active">
-     <Link to="/profiles" className="nav-link">Posts</Link>
+     <Link to="/profiles" className="nav-link mt-2">Posts</Link>
      </li>
   <li className="nav-item active">
-  <button className="nav-link btn btn-link" onClick={this.onClick.bind(this)}>Logout</button>
+  <Link to="/login" className="nav-link" onClick={this.onClick.bind(this)}>
+      <img className="navbar-brand rounded-circle" src={this.state.url} alt="Unavailable" width="40" height="40" 
+      style={{"height":"40px","width":"40px"}}/>
+  Logout
+  </Link>
   </li>
   </ul>);
     return(

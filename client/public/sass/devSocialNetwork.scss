@@ -67,7 +67,7 @@ body{
     @include rgt-label();
   }
   .form-group{
-    margin-top: 60px;
+    margin-top: 50px;
   }
   .dvn{
     @include rgt-dvn();
@@ -87,9 +87,7 @@ body{
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) {
-  body{
 
-  }
 }
 
 
@@ -114,15 +112,11 @@ body{
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
-  body{
-
-  }
+ 
 }
 
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
-  body{
-
-  }
+ 
 }

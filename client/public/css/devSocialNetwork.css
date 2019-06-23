@@ -29,15 +29,15 @@ body #rgt label {
   font-family: 'Fira Sans Condensed', sans-serif;
   font-weight: bolder; }
 body #rgt .form-group {
-  margin-top: 60px; }
+  margin-top: 50px; }
 body #rgt .dvn {
   background: linear-gradient(#009FFF, #ec2F4B);
   -webkit-background-clip: text;
   color: transparent;
   font-family: 'Dancing Script', cursive; }
 body #rgt input {
-  height: 45px;
-  font-size: 1.4em; }
+  height: 40px;
+  font-size: 1.2em; }
 body #rgt img {
   width: 100px;
   height: 100px; }
