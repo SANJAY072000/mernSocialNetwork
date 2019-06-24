@@ -190,19 +190,19 @@ router.post('/addexp',passport.authenticate('jwt',{session:false}),(req,res)=>{
 router.post('/addedu',passport.authenticate('jwt',{session:false}),(req,res)=>{
   const education={};
   if(req.body.institution)
-  experience.institution=req.body.institution;
+  education.institution=req.body.institution;
   if(req.body.degree)
-  experience.degree=req.body.degree;
+  education.degree=req.body.degree;
   if(req.body.branch)
-  experience.branch=req.body.branch;
+  education.branch=req.body.branch;
   if(req.body.desc)
-  experience.desc=req.body.desc;
+  education.desc=req.body.desc;
   if(req.body.from)
-  experience.from=req.body.from;
+  education.from=req.body.from;
   if(req.body.to)
-  experience.to=req.body.to;
+  education.to=req.body.to;
   if(req.body.isWorking)
-  experience.isWorking=req.body.isWorking;
+  education.isWorking=req.body.isWorking;
   Profile.findOne({user:req.user._id})
          .then(profile=>{
            profile.education.unshift(education);
@@ -214,7 +214,71 @@ router.post('/addedu',passport.authenticate('jwt',{session:false}),(req,res)=>{
 });
 
 
+/*
+@type - GET
+@route - /api/profile/del-:expeduid
+@desc - a route to get the experience or education to be deleted on client
+@access - PRIVATE
+*/
+router.get('/del-:expeduid',passport.authenticate('jwt',{session:false}),
+(req,res)=>{
+Profile.findOne({user:req.user._id})
+.then(profile=>{
+if(profile.experience.filter(a=>a._id.toString()===req.params.expeduid.toString()).length){
+const i=profile.experience.findIndex(a=>a._id.toString()===req.params.expeduid.toString());
+          res.status(200).json({title:'Experience',
+        exp:profile.experience[i]});
+        }
+        else if(profile.education
+          .filter(a=>a._id.toString()===req.params.expeduid.toString()).length){
+          const i=profile.education
+          .findIndex(a=>a._id.toString()===req.params.expeduid.toString());
+          res.status(200).json({title:'Education',
+          edu:profile.education[i]});
+        }
+       })
+       .catch(err=>console.log(err));
+});
 
+
+/*
+@type - DELETE
+@route - /api/profile/delexp-:expid
+@desc - a route to delete the experience on client
+@access - PRIVATE
+*/
+router.delete('/delexp-:expid',passport.authenticate('jwt',{session:false}),
+(req,res)=>{
+  Profile.findOne({user:req.user._id})
+         .then(profile=>{
+          const i=profile.experience.findIndex(a=>a._id.toString()===req.params.expid.toString());
+          profile.experience.splice(i,1);
+          profile.save()
+                 .then(profile=>res.status(200).json({expdel:'Experience Deleted'}))
+                 .catch(err=>console.log(err));
+         })
+         .catch(err=>console.log(err));
+});
+
+
+/*
+@type - DELETE
+@route - /api/profile/deledu-:eduid
+@desc - a route to delete the education on client
+@access - PRIVATE
+*/
+router.delete('/deledu-:eduid',passport.authenticate('jwt',{session:false}),
+(req,res)=>{
+  Profile.findOne({user:req.user._id})
+         .then(profile=>{
+          const i=profile.education.findIndex(a=>a._id.toString()===req.params.eduid.toString());
+          profile.education.splice(i,1);
+          profile.save()
+                 .then(profile=>res.status(200).json({edudel:'Education Deleted'}))
+                 .catch(err=>console.log(err));
+         })
+         .catch(err=>console.log(err));
+});
 
 
 

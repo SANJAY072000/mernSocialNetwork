@@ -20,23 +20,23 @@ export default class Dashboard extends Component {
     })
     .catch(err=>console.log(err));
   }
-  // componentDidUpdate(){
-  //   axios({
-  //     url:'/api/profile/dashboard',
-  //     headers:{
-  //       Authorization:localStorage.getItem('usertoken')
-  //     }
-  //   })
-  //   .then(res=>{
-  //     if(res.data.profilenotfound==='No Profile yet')
-  //     this.setState({isProfile:true});
-  //     else
-  //     this.setState({exp:res.data.experience,
-  //     edu:res.data.education,
-  //   profile:res.data});
-  //   })
-  //   .catch(err=>console.log(err));
-  // }
+  componentDidUpdate(){
+    axios({
+      url:'/api/profile/dashboard',
+      headers:{
+        Authorization:localStorage.getItem('usertoken')
+      }
+    })
+    .then(res=>{
+      if(res.data.profilenotfound==='No Profile yet')
+      this.setState({isProfile:true});
+      else
+      this.setState({exp:res.data.experience,
+      edu:res.data.education,
+    profile:res.data});
+    })
+    .catch(err=>console.log(err));
+  }
   constructor(props){
     super(props);
     this.state = {
@@ -63,7 +63,13 @@ class Hashboard extends Component{
       <h1 className="display-3 mt-5 dash">Dashboard</h1>
       <h3 className="mt-2 ml-1 text-muted">Welcome
       <span className="ml-3 usn font-weight-bold">{this.props.profile.username}
-      </span></h3>
+      </span>
+      </h3>
+      <Link to="/edit-credentials">
+      <button type="button" className="ml-1 mt-3 btn btn-outline-info">
+      <i className="fa fa-user-plus" aria-hidden="true"></i> Edit Credentials
+      </button>
+      </Link>
       <div className="mt-4 mb-5">
       <Link to="/edit-profile">
       <button type="button" className="ml-1 btn btn-outline-primary"><i className="fa fa-user" aria-hidden="true"></i> Edit Profile</button>
@@ -77,7 +83,8 @@ class Hashboard extends Component{
     </div>
     <hr/>
     <div className="mt-5 ml-1">
-    <h2 className="display-5 ed font-weight-bold">Experience Details <i className="fa fa-plus-circle" aria-hidden="true"></i></h2>
+    <h2 className="display-5 ed font-weight-bold">Experience Details 
+    <i className="fa fa-plus-circle ml-2" aria-hidden="true"></i></h2>
       <table className="table table-striped">
     <thead>
       <tr>
@@ -95,7 +102,8 @@ class Hashboard extends Component{
     <br/>
     <br/>
     <div className="mt-5 ml-1">
-    <h2 className="display-5 ed font-weight-bold">Education Details <i className="fa ml-2 fa-graduation-cap" aria-hidden="true"></i></h2>
+    <h2 className="display-5 ed font-weight-bold">Education Details 
+    <i className="fa ml-2 fa-graduation-cap ml-2" aria-hidden="true"></i></h2>
       <table className="table table-striped">
     <thead>
       <tr>
@@ -106,6 +114,7 @@ class Hashboard extends Component{
       </tr>
     </thead>
     <tbody>
+    {this.props.profile.education.map((a,i)=><Edu ed={a} key={i}/>)}
     </tbody>
   </table>
     </div>
@@ -130,7 +139,9 @@ class Exp extends Component {
         {this.props.ep.from} - {this.props.ep.isWorking?'Currently Working':this.props.ep.to}
       </td>
       <td>
-        <button className="btn btn-danger mb-1">Delete</button>
+      <Link to={`/del-${this.props.ep._id}`}>
+      <button className="btn btn-danger btn-sm mb-1">Delete</button>
+      </Link>
       </td>
     </tr>
     );
@@ -151,7 +162,9 @@ class Edu extends Component {
         {this.props.ed.from} - {this.props.ed.isWorking?'Currently Studying':this.props.ed.to}
       </td>
       <td>
-        <button className="btn btn-danger">Delete</button>
+      <Link to={`/del-${this.props.ed._id}`}>
+      <button className="btn btn-danger btn-sm mb-1">Delete</button>
+      </Link>
       </td>
     </tr>
     );

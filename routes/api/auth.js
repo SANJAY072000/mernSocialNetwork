@@ -116,6 +116,49 @@ router.post('/login',(req,res)=>{
 });
 
 
+/*
+@type - POST
+@route - /api/auth/chglogin
+@desc - a route to change login credentials of the user
+@access - PRIVATE
+*/
+router.post('/chglogin',passport.authenticate('jwt',{session:false}),(req,res)=>{
+  const name=req.body.name,email=req.body.email,password=req.body.password,
+  loginValues={name,email,password};
+  bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.hash(loginValues.password, salt, function(err, hash) {
+        if(err)throw err;
+        loginValues.password=hash;
+        Person.findOneAndUpdate({_id:req.user._id},{$set:loginValues},{new:true})
+        .then(person=>{
+          var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: 'sanjaysinghbisht751@gmail.com',
+              pass: '2018bci1001'
+            }
+          });
+          
+          var mailOptions = {};
+          mailOptions.from='sanjaysinghbisht751@gmail.com';
+          mailOptions.to=person.email;
+          mailOptions.subject='Your new credentials !';
+          mailOptions.text=`Your new credentials are : email - ${person.email} and password - ${req.body.password}`;
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          });
+          res.status(200).json(person);
+        })
+        .catch(err=>console.log(err));
+    });
+  });
+});
+
+
 
 
 

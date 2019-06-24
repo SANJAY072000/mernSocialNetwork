@@ -10,6 +10,8 @@ import EditProfile from './components/dashboard/EditProfile';
 import UpdatePic from './components/dashboard/UpdatePic';
 import AddExp from './components/dashboard/AddExp';
 import AddEdu from './components/dashboard/AddEdu';
+import EditCred from './components/dashboard/EditCred';
+import DelExpEdu from './components/dashboard/DelExpEdu';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 
 export default class App extends Component {
@@ -28,6 +30,8 @@ export default class App extends Component {
       <Route path="/update-pic" component={UpdatePic}/>
       <Route path="/add-experience" component={AddExp}/>
       <Route path="/add-education" component={AddEdu}/>
+      <Route path="/edit-credentials" component={EditCred}/>
+      <Route path="/del-:expeduid" component={DelExpEdu}/>
 
     </div>
   </Router>

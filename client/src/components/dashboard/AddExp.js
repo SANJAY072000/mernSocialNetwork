@@ -91,10 +91,13 @@ export default class AddExp extends Component {
   </div>
   <div className="form-group">
     <label>To</label>
-    <input type="date" className='form-control' placeholder="To" name="to" value={this.state.to} onChange={this.onChange}/>
+    <input type="date" className='form-control' placeholder="To" 
+     name="to" disabled={this.state.isWorking?true:false}
+     value={this.state.to} onChange={this.onChange}/>
   </div>
   <div className="form-group">
-    <input type="checkbox" className='form-control mb-2' name="isWorking" 
+    <input type="checkbox" className='form-control mb-2'
+    disabled={(this.state.to==='')?false:true} name="isWorking" 
     checked={this.state.isWorking} onChange={this.onCheck} 
     style={{"height":"20px","marginLeft":"-225px"}}/>
     <label>Current Job</label>
