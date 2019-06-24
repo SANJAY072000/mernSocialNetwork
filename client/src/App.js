@@ -6,6 +6,10 @@ import ProfileList from './components/ProfileList';
 import Profile from './components/Profile';
 import Dashboard from './components/Dashboard';
 import Upload from './components/Upload';
+import EditProfile from './components/dashboard/EditProfile';
+import UpdatePic from './components/dashboard/UpdatePic';
+import AddExp from './components/dashboard/AddExp';
+import AddEdu from './components/dashboard/AddEdu';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 
 export default class App extends Component {
@@ -20,6 +24,10 @@ export default class App extends Component {
       <Route path="/create" component={Profile}/>
       <Route path="/dashboard" component={Dashboard}/>
       <Route path="/upload" component={Upload}/>
+      <Route path="/edit-profile" component={EditProfile}/>
+      <Route path="/update-pic" component={UpdatePic}/>
+      <Route path="/add-experience" component={AddExp}/>
+      <Route path="/add-education" component={AddEdu}/>
 
     </div>
   </Router>

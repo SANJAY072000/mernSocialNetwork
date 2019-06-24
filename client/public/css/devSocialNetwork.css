@@ -45,6 +45,18 @@ body #rgt .btn {
   margin-top: 70px;
   font-size: 1.3em;
   font-family: 'Bree Serif', serif; }
+body #hash {
+  font-family: 'Catamaran', sans-serif; }
+  body #hash .dash {
+    background: linear-gradient(#009FFF, #ec2F4B);
+    -webkit-background-clip: text;
+    color: transparent; }
+  body #hash .usn {
+    background: linear-gradient(#f12711, #f5af19);
+    -webkit-background-clip: text;
+    color: transparent; }
+  body #hash .ed {
+    font-family: 'Dancing Script', cursive; }
 
 @media (min-width: 768px) {
   body .navbar {

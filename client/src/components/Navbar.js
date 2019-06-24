@@ -12,7 +12,22 @@ export default class Navbar extends Component {
     })
     .then(res=>{
       if(res.data.profilenotfound==='No Profile yet')
-      this.setState({url:'images/upload/man.png'});
+      this.setState({isProfile:true});
+     else if(res.data.pic!=='images/upload/man.png')
+      this.setState({url:res.data.pic});
+    })
+    .catch(err=>console.log(err));
+  }
+  componentDidUpdate(){
+    axios({
+      url:'/api/profile/dashboard',
+      headers:{
+        Authorization:localStorage.getItem('usertoken')
+      }
+    })
+    .then(res=>{
+      if(res.data.profilenotfound==='No Profile yet')
+      this.setState({isProfile:true});
      else if(res.data.pic!=='images/upload/man.png')
       this.setState({url:res.data.pic});
     })
@@ -22,7 +37,8 @@ export default class Navbar extends Component {
     super(props);
     this.state = {
      redirect:false,
-     url:'images/upload/man.png'
+     url:'images/upload/man.png',
+     isProfile:false
     };
   }
   renderRedirect(){
@@ -51,13 +67,19 @@ export default class Navbar extends Component {
         </li>
         </ul>),
         userLink=(<ul className="navbar-nav">
-     <li className="nav-item active">
-     <Link to="/profiles" className="nav-link mt-2">Posts</Link>
+        <li className="nav-item active mt-2">
+        <Link to="/dashboard" className="nav-link">
+        <img className="navbar-brand rounded-circle" src={this.state.url} alt="Unavailable" width="40" height="40"
+        style={{"height":"40px","width":"40px"}}/>
+        {this.state.isProfile?'':'Dashboard'}
+        </Link>
+        </li>
+     <li className="nav-item active"  style={{"marginTop":"6px"}}>
+     <Link to={this.state.isProfile?'/create':'/profiles'} className="nav-link mt-2">{this.state.isProfile?'Create':'Posts'}
+     </Link>
      </li>
-  <li className="nav-item active">
+  <li className="nav-item active" style={{"marginTop":"14px"}}>
   <Link to="/login" className="nav-link" onClick={this.onClick.bind(this)}>
-      <img className="navbar-brand rounded-circle" src={this.state.url} alt="Unavailable" width="40" height="40" 
-      style={{"height":"40px","width":"40px"}}/>
   Logout
   </Link>
   </li>
