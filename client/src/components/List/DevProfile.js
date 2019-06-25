@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import Navbar from '../Navbar';
+import {Link} from 'react-router-dom';
 
 export default class DevProfile extends Component{
   componentDidMount(){
@@ -49,6 +50,15 @@ class Pl extends Component{
         {this.props.profile.user.name}</h1>
         <p className="text-center mt-3">{this.props.profile.domain}</p>
         <p className="text-center border-bottom border-dark pb-4">{this.props.profile.address}</p>
+        <div className=
+        {localStorage.getItem('usertoken')?'d-flex justify-content-center':'d-none'}>
+        <Link to="/posts" className="btn btn-outline-warning btn-block mr-3">
+        <i className="fa fa-telegram" aria-hidden="true"></i>  View Posts
+        </Link>
+        <Link to="/messages" className="btn btn-outline-danger btn-block">
+        <i className="fa fa-envelope-open-o" aria-hidden="true"></i>  Send Messages
+        </Link>
+        </div>
         <br/>
         <h4 className="text-center text-info">
         {this.props.profile.user.name}'s Bio</h4>

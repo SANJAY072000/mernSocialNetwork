@@ -13,6 +13,8 @@ import AddEdu from './components/dashboard/AddEdu';
 import EditCred from './components/dashboard/EditCred';
 import DelExpEdu from './components/dashboard/DelExpEdu';
 import DevProfile from './components/List/DevProfile';
+import Post from './components/func/Post';
+import Msg from './components/func/Msg';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 
 export default class App extends Component {
@@ -34,6 +36,8 @@ export default class App extends Component {
       <Route path="/edit-credentials" component={EditCred}/>
       <Route path="/del-:expeduid" component={DelExpEdu}/>
       <Route path="/profile-:username" component={DevProfile}/>
+      <Route path="/posts" component={Post}/>
+      <Route path="/messages" component={Msg}/>
     </div>
   </Router>
     );
