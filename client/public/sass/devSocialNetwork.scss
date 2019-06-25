@@ -85,17 +85,19 @@ body{
 #hash{
   font-family: 'Catamaran', sans-serif;
   .dash{
-    background: linear-gradient(#009FFF,#ec2F4B);
-    -webkit-background-clip: text;
-    color: transparent;
+    @include hash-dash();
   }
   .usn{
-    background: linear-gradient(#f12711,#f5af19);
-    -webkit-background-clip: text;
-    color: transparent;
+    @include hash-usn();
   }
   .ed{
     font-family: 'Dancing Script', cursive;
+  }
+}
+#pl{
+  font-family: 'Raleway', sans-serif;
+  .pl{
+  background-color:#d3e0ed;
   }
 }
 }

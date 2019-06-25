@@ -97,11 +97,11 @@ export default class AddEdu extends Component {
     value={this.state.to} onChange={this.onChange}/>
   </div>
   <div className="form-group">
-    <input type="checkbox" className='form-control mb-2' 
+    <input type="checkbox" className='form-control mt-1 d-inline' 
     name="isWorking" disabled={(this.state.to==='')?false:true}
     checked={this.state.isWorking} onChange={this.onCheck} 
-    style={{"height":"20px","marginLeft":"-225px"}}/>
-    <label>Currently doing</label>
+    style={{"height":"20px","width":"15px"}}/>
+    <label className="d-inline ml-2">Currently doing</label>
   </div>
   <div className="form-group">
     <label>Program Description</label>

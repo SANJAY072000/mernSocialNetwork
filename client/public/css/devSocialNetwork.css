@@ -57,6 +57,10 @@ body #hash {
     color: transparent; }
   body #hash .ed {
     font-family: 'Dancing Script', cursive; }
+body #pl {
+  font-family: 'Raleway', sans-serif; }
+  body #pl .pl {
+    background-color: #d3e0ed; }
 
 @media (min-width: 768px) {
   body .navbar {

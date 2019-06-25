@@ -74,3 +74,36 @@
   font-size: 1.3em;
   font-family: 'Bree Serif', serif;
 }
+@mixin hash-dash(){
+  background: linear-gradient(#009FFF,#ec2F4B);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+@mixin hash-usn(){
+  background: linear-gradient(#f12711,#f5af19);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

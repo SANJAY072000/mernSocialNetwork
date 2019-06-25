@@ -281,6 +281,41 @@ router.delete('/deledu-:eduid',passport.authenticate('jwt',{session:false}),
 });
 
 
+/*
+@type - GET
+@route - /api/profile/all
+@desc - a route to get profiles of all the users
+@access - PUBLIC
+*/
+router.get('/all',(req,res)=>{
+  Profile.find()
+         .populate('user',['name'])
+         .then(profile=>res.status(200).json(profile))
+         .catch(err=>console.log(err));
+});
+
+
+/*
+@type - GET
+@route - /api/profile/usf-:username
+@desc - a route to get the profile of the user through username
+@access - PUBLIC
+*/
+router.get('/usf-:username',(req,res)=>{
+  Profile.findOne({username:req.params.username})
+         .populate('user',['name'])
+         .then(profile=>{
+           if(!profile)
+           return res.status(200).json({profileofusername:'Profile not found'});
+           res.status(200).json(profile);
+         })
+         .catch(err=>console.log(err));
+});
+
+
+
+
+
 
 // exporting all the routes
 module.exports=router;
