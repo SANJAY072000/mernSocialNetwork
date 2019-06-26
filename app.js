@@ -21,7 +21,8 @@ mongoose.connect(dbstr,{useNewUrlParser:true})
 
 // fetching all the routes
 const auth=require('./routes/api/auth'),
-profile=require('./routes/api/profile');
+profile=require('./routes/api/profile'),
+post=require('./routes/api/post');
 
 
 // configuring middleware for bodyparser
@@ -44,6 +45,7 @@ require('./strategies/jsonwtStrategy')(passport);
 // configuring all the routes
 app.use('/api/auth',auth);
 app.use('/api/profile',profile);
+app.use('/api/post',post);
 
 
 // serving all the assets

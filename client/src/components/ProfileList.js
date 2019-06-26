@@ -52,19 +52,19 @@ class List extends Component{
     return(
       <div className="row pl mt-5 py-4 px-2 w-100 border-top border-bottom border-dark">
         <div className="col-6">
-        <img className="rounded-circle ml-4 img-fluid" alt="Unavailable" 
+        <img className="rounded-circle ml-4 img-fluid float-right" alt="Unavailable" 
         src={this.props.profiles.pic} style={{"width":"200px","height":"200px"}}/>
         </div>
         <div className="col-6">
         <h3 className="mt-3">{this.props.profiles.user.name}</h3>
-        <p className="text-muted">{this.props.profiles.domain}</p>
+        <p className="text-muted">{this.props.profiles.username}</p>
         <Link to={`/profile-${this.props.profiles.username}`} className="btn btn-primary btn-sm mt-2" 
         style={{"marginTop":"-5px"}}>
         <i className="fa fa-user" aria-hidden="true"></i> View Profile</Link>
         </div>
-        <div className="col-6">
+        <div className="col-6 offset-3">
         <h3 className="my-4 text-center">Profession</h3>
-        <p className="bg-light p-3 mx-auto border w-50"><i className="fa fa-check" aria-hidden="true"></i> {this.props.profiles.domain}</p>
+        <p className="bg-light p-3 mx-auto border w-100"><i className="fa fa-check" aria-hidden="true"></i> {this.props.profiles.domain}</p>
         </div>
         </div>
     );
