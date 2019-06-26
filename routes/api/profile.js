@@ -3,7 +3,8 @@ const express=require('express'),
 router=express.Router(),
 passport=require('passport'),
 multer=require('multer'),
-path=require('path');
+path=require('path'),
+key=require('../../setup/mongourl');
 
 
 // fetching all the schemas

@@ -57,12 +57,12 @@ class List extends Component{
         </div>
         <div className="col-6">
         <h3 className="mt-3">{this.props.profiles.user.name}</h3>
-        <p className="text-muted">{this.props.profiles.username}</p>
+        <p className="text-muted">{this.props.profiles.domain}</p>
         <Link to={`/profile-${this.props.profiles.username}`} className="btn btn-primary btn-sm mt-2" 
         style={{"marginTop":"-5px"}}>
         <i className="fa fa-user" aria-hidden="true"></i> View Profile</Link>
         </div>
-        <div className="col-12">
+        <div className="col-6">
         <h3 className="my-4 text-center">Profession</h3>
         <p className="bg-light p-3 mx-auto border w-50"><i className="fa fa-check" aria-hidden="true"></i> {this.props.profiles.domain}</p>
         </div>

@@ -96,7 +96,7 @@ export default class Profile extends Component {
             isUsername:false,
             aboutFifty:false
           });
-          this.props.history.push('/upload');
+          this.props.history.push('/dashboard');
         }
       })
       .catch(err=>console.log(err));

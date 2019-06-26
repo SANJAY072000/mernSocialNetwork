@@ -44,7 +44,8 @@ class Pl extends Component{
           <div>
         <div className="d-flex justify-content-center align-item-center mt-5">
         <img className="img-fluid mt-4 rounded-circle" 
-        src={`${this.props.profile.pic}`} alt="Unavailable" style={{"width":"250px","height":"250px"}}/>
+        src={`${this.props.profile.pic}`} alt="Unavailable" 
+        style={{"width":"250px","height":"250px"}}/>
         </div>
         <h1 className="display-4 text-center mt-3">
         {this.props.profile.user.name}</h1>
@@ -65,7 +66,8 @@ class Pl extends Component{
         <p className="lead mt-4 ml-4">{this.props.profile.about}</p>
         <h4 className="text-center mt-3 text-info mt-4">Skills Set</h4>
       {this.props.profile.skills.map((a,i)=>
-       <p className="lead mt-4 ml-4 text-center" key={i}>{a}</p>)}
+       <p className="lead mt-4 ml-4 text-center" key={i}>
+       <i className="fa fa-check" aria-hidden="true"></i> {a}</p>)}
         <h4 className="text-center text-info">Github Profile</h4>
         <p className="lead mt-4 ml-4 pb-5 text-center border-bottom border-dark">{this.props.profile.projects}</p>
         <div className="container">
@@ -88,13 +90,12 @@ class Pl extends Component{
 </div>
 </div>
       );
+      }
     }
-}
 
 class Ex extends Component{
     render(){
         return(
-            
             <div className="card-body border border-success mb-3">
     <h5 className="card-title">{this.props.exp.company}</h5>
     <div className="card-text">
@@ -108,7 +109,6 @@ class Ex extends Component{
     </p>
     </div>
   </div>
- 
         );
     }
 }
@@ -116,8 +116,7 @@ class Ex extends Component{
 class Ep extends Component{
     render(){
         return(
-            
-            <div className="card-body border border-success mb-3">
+    <div className="card-body border border-success mb-3">
     <h5 className="card-title">{this.props.epp.institution}</h5>
     <div className="card-text">
     <p className="text-muted">

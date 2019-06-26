@@ -97,10 +97,12 @@ export default class DelExpEdu extends Component {
     value={this.state.isExp?this.state.expedu.to:this.state.expedu.to} />
   </div>
   <div className="form-group">
-    <input type="checkbox" disabled className='form-control mb-2' 
+    <input type="checkbox" disabled className='form-control mt-1 d-inline' 
     checked={this.state.expedu.isWorking}
-    style={{"height":"20px","marginLeft":"-225px"}}/>
-  <label>{this.state.isExp?'Current Job':'Currently Doing'}</label>
+    style={{"height":"20px","width":"15px"}}/>
+  <label className="d-inline ml-2">
+  {this.state.isExp?'Current Job':'Currently Doing'}
+  </label>
   </div>
   <div className="form-group">
   <label>{this.state.isExp?'Job Description':'Program Description'}</label>
