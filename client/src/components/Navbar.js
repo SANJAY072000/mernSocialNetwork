@@ -14,7 +14,9 @@ export default class Navbar extends Component {
       if(res.data.profilenotfound==='No Profile yet')
       this.setState({isProfile:true});
      else if(res.data.pic!=='images/upload/man.png')
-      this.setState({url:res.data.pic});
+      this.setState({url:res.data.pic,
+      id:res.data._id});
+      else this.setState({id:res.data._id});
     })
     .catch(err=>console.log(err));
   }
@@ -29,7 +31,8 @@ export default class Navbar extends Component {
       if(res.data.profilenotfound==='No Profile yet')
       this.setState({isProfile:true});
      else if(res.data.pic!=='images/upload/man.png')
-      this.setState({url:res.data.pic});
+      this.setState({url:res.data.pic,id:res.data._id});
+      else this.setState({id:res.data._id});
     })
     .catch(err=>console.log(err));
   }
@@ -38,7 +41,8 @@ export default class Navbar extends Component {
     this.state = {
      redirect:false,
      url:'images/upload/man.png',
-     isProfile:false
+     isProfile:false,
+     id:''
     };
   }
   renderRedirect(){
@@ -75,7 +79,7 @@ export default class Navbar extends Component {
         </Link>
         </li>
      <li className="nav-item active"  style={{"marginTop":"6px"}}>
-     <Link to={this.state.isProfile?'/create':'/profiles'} className="nav-link mt-2">{this.state.isProfile?'Create':'Posts'}
+     <Link to={this.state.isProfile?'/create':`/posts-${this.state.id}`} className="nav-link mt-2">{this.state.isProfile?'Create':'Posts'}
      </Link>
      </li>
   <li className="nav-item active" style={{"marginTop":"14px"}}>

@@ -53,7 +53,7 @@ class Pl extends Component{
         <p className="text-center border-bottom border-dark pb-4">{this.props.profile.address}</p>
         <div className=
         {localStorage.getItem('usertoken')?'d-flex justify-content-center':'d-none'}>
-        <Link to="/posts" className="btn btn-outline-warning btn-block mr-3">
+        <Link to={`/posts-${this.props.profile._id}`} className="btn btn-outline-warning btn-block mr-3">
         <i className="fa fa-telegram" aria-hidden="true"></i>  View Posts
         </Link>
         <Link to="/messages" className="btn btn-outline-danger btn-block">

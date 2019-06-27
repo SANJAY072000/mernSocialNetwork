@@ -115,8 +115,13 @@ Profile.findOne({_id:req.params.prfid})
        Post.findOne({user:profile.user})
            .then(post=>{
            const i=post.posts.findIndex(a=>a._id.toString()===req.params.pstid.toString());
-           if(!(post.posts[i].likes.filter(a=>a.user.toString()===req.user._id.toString()).length))
+           if(!(post.posts[i].likes.filter(a=>a.user.toString()===req.user._id.toString()).length)){
            post.posts[i].likes.unshift({user:req.user._id});
+           if(post.posts[i].dislikes.filter(a=>a.user.toString()===req.user._id.toString()).length){
+           const j=post.posts[i].dislikes.findIndex(a=>a.user.toString()===req.user._id.toString());
+           post.posts[i].dislikes.splice(j,1);
+           }
+        }
            else return res.status(200).json({alreadyliked:'Cannot like again'});
            post.save()
                .then(post=>res.status(200).json(post))
@@ -140,8 +145,13 @@ router.get('/dislike/:prfid-:pstid',passport.authenticate('jwt',{session:false})
            Post.findOne({user:profile.user})
                .then(post=>{
                const i=post.posts.findIndex(a=>a._id.toString()===req.params.pstid.toString());
-               if(!(post.posts[i].dislikes.filter(a=>a.user.toString()===req.user._id.toString()).length))
-               post.posts[i].dislikes.unshift({user:req.user._id});
+               if(!(post.posts[i].dislikes.filter(a=>a.user.toString()===req.user._id.toString()).length)){
+                post.posts[i].dislikes.unshift({user:req.user._id});
+                if(post.posts[i].likes.filter(a=>a.user.toString()===req.user._id.toString()).length){
+                const j=post.posts[i].likes.findIndex(a=>a.user.toString()===req.user._id.toString());
+                post.posts[i].likes.splice(j,1);
+                }
+             }
                else return res.status(200).json({alreadydisliked:'Cannot dislike again'});
                post.save()
                    .then(post=>res.status(200).json(post))
@@ -214,17 +224,29 @@ Profile.findOne({_id:req.params.prfid})
 
 /*
 @type - DELETE
-@route - /api/post/delpost-:pstid
+@route - /api/post/delpost/:prfid-:pstid
 @desc - a route to delete posts from a user's timeline
 @access - PRIVATE
 */
-// router.delete('/delpost-:pstid',passport.authenticate('jwt',{session:false}),(req,res)=>{
-//     Post.findOne({user:req.user._id})
-//         .then(post=>{
-//             if(!)
-//         })
-//         .catch(err=>console.log(err));
-// });
+router.delete('/delpost/:prfid-:pstid',passport.authenticate('jwt',{session:false}),(req,res)=>{
+Profile.findOne({_id:req.params.prfid})
+       .then(profile=>{
+       Post.findOne({user:profile.user})
+           .then(post=>{
+               const i=post.posts.findIndex(a=>a._id.toString()===req.params.pstid.toString());
+               if(post.posts[i].user.toString()===req.user._id.toString()){
+                post.posts.splice(i,1);
+                post.save()
+                    .then(post=>res.status(200).json(post))
+                    .catch(err=>console.log(err));
+                }
+                else res.status(200).json({postcantdelete:'Post cannot be deleted'});
+
+           })
+           .catch(err=>console.log(err)); 
+       })
+       .catch(err=>console.log(err));
+});
 
 
 
