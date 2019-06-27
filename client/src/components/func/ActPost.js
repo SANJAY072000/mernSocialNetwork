@@ -13,6 +13,9 @@ export default class ActPost extends Component{
 }
 
 class Aip extends Component{
+    componentDidMount(){
+        setInterval(()=>this.setState({del:false}),5000);
+    }
     constructor(props){
         super(props);
         this.state={

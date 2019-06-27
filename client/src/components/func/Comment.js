@@ -139,6 +139,9 @@ class Cip extends Component{
 }
 
 class Just extends Component{
+    componentDidMount(){
+        setInterval(()=>this.setState({del:false}),5000);
+    }
     constructor(props){
         super(props);
         this.state={
