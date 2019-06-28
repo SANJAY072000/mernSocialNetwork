@@ -100,16 +100,7 @@ export default class Post extends Component{
     }
 }
 
-class NoPost extends Component{
-    render(){
-        return(
-            <div className="mt-3">
-            <hr/>
-            <h1 className="display-4 text-muted text-center">No Posts found</h1>
-            </div>
-        );
-    }
-}
+
 
 
 

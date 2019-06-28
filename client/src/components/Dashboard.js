@@ -56,6 +56,26 @@ export default class Dashboard extends Component {
 
 
 class Hashboard extends Component{
+  constructor(props){
+    super(props);
+    this.onDel=this.onDel.bind(this);
+  }
+  onDel(e){
+    axios({
+      method:'delete',
+      headers:{
+        Authorization:localStorage.getItem('usertoken')
+      },
+      url:'/api/auth/del'
+    })
+    .then(res=>{
+      if(res.data.deleted==='Account deleted successfully'){
+      console.log('You are removed successfully');
+      localStorage.removeItem('usertoken');
+    }
+    })
+    .catch(err=>console.log(err));
+  }
   render(){
     return (
       <div>
@@ -118,7 +138,10 @@ class Hashboard extends Component{
     </tbody>
   </table>
     </div>
-    <button className="btn btn-outline-danger my-5 ml-1">Delete My Account</button>
+    <Link to="/register" className="btn btn-outline-danger my-5 ml-1" 
+    onClick={this.onDel}>
+    Delete My Account
+    </Link>
       </div>
       </div>
     );

@@ -44,6 +44,8 @@ fy3:#FBD28B,
 // Extra small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
 body{
+  background-color: #ffffff;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='495' height='495' viewBox='0 0 200 200'%3E%3Cpolygon fill='%23DCEFFA' fill-opacity='0.73' points='100 0 0 100 100 100 100 200 200 100 200 0'/%3E%3C/svg%3E");
   .navbar{
     @include navbar();
   }

@@ -1,66 +1,69 @@
-body .navbar {
-  position: relative;
-  z-index: 2; }
-body .lp {
-  background: url("../images/landingpage.jpg") no-repeat center center fixed;
-  background-size: cover;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1; }
-  body .lp h1 {
-    font-family: 'Slabo 27px', serif; }
-  body .lp p {
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.2em; }
-body #rgt h1 {
-  background: linear-gradient(#833ab4, #fd1d1d, #FF0080);
-  -webkit-background-clip: text;
-  color: transparent;
-  font-family: 'Fira Sans Condensed', sans-serif;
-  font-weight: bolder; }
-body #rgt p {
-  font-family: 'Catamaran', sans-serif;
-  font-size: 1.2em;
-  font-weight: bolder; }
-body #rgt label {
-  font-size: 1.4em;
-  font-family: 'Fira Sans Condensed', sans-serif;
-  font-weight: bolder; }
-body #rgt .form-group {
-  margin-top: 50px; }
-body #rgt .dvn {
-  background: linear-gradient(#009FFF, #ec2F4B);
-  -webkit-background-clip: text;
-  color: transparent;
-  font-family: 'Dancing Script', cursive; }
-body #rgt input {
-  height: 40px;
-  font-size: 1.2em; }
-body #rgt img {
-  width: 100px;
-  height: 100px; }
-body #rgt .btn {
-  margin-top: 70px;
-  font-size: 1.3em;
-  font-family: 'Bree Serif', serif; }
-body #hash {
-  font-family: 'Catamaran', sans-serif; }
-  body #hash .dash {
+body {
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='495' height='495' viewBox='0 0 200 200'%3E%3Cpolygon fill='%23DCEFFA' fill-opacity='0.73' points='100 0 0 100 100 100 100 200 200 100 200 0'/%3E%3C/svg%3E"); }
+  body .navbar {
+    position: relative;
+    z-index: 2; }
+  body .lp {
+    background: url("../images/landingpage.jpg") no-repeat center center fixed;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1; }
+    body .lp h1 {
+      font-family: 'Slabo 27px', serif; }
+    body .lp p {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.2em; }
+  body #rgt h1 {
+    background: linear-gradient(#833ab4, #fd1d1d, #FF0080);
+    -webkit-background-clip: text;
+    color: transparent;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-weight: bolder; }
+  body #rgt p {
+    font-family: 'Catamaran', sans-serif;
+    font-size: 1.2em;
+    font-weight: bolder; }
+  body #rgt label {
+    font-size: 1.4em;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-weight: bolder; }
+  body #rgt .form-group {
+    margin-top: 50px; }
+  body #rgt .dvn {
     background: linear-gradient(#009FFF, #ec2F4B);
     -webkit-background-clip: text;
-    color: transparent; }
-  body #hash .usn {
-    background: linear-gradient(#f12711, #f5af19);
-    -webkit-background-clip: text;
-    color: transparent; }
-  body #hash .ed {
+    color: transparent;
     font-family: 'Dancing Script', cursive; }
-body #pl {
-  font-family: 'Raleway', sans-serif; }
-  body #pl .pl {
-    background-color: #d3e0ed; }
+  body #rgt input {
+    height: 40px;
+    font-size: 1.2em; }
+  body #rgt img {
+    width: 100px;
+    height: 100px; }
+  body #rgt .btn {
+    margin-top: 70px;
+    font-size: 1.3em;
+    font-family: 'Bree Serif', serif; }
+  body #hash {
+    font-family: 'Catamaran', sans-serif; }
+    body #hash .dash {
+      background: linear-gradient(#009FFF, #ec2F4B);
+      -webkit-background-clip: text;
+      color: transparent; }
+    body #hash .usn {
+      background: linear-gradient(#f12711, #f5af19);
+      -webkit-background-clip: text;
+      color: transparent; }
+    body #hash .ed {
+      font-family: 'Dancing Script', cursive; }
+  body #pl {
+    font-family: 'Raleway', sans-serif; }
+    body #pl .pl {
+      background-color: #d3e0ed; }
 
 @media (min-width: 768px) {
   body .navbar {

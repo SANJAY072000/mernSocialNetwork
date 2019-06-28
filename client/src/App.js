@@ -39,7 +39,7 @@ export default class App extends Component {
       <Route path="/profile-:username" component={DevProfile}/>
       <Route path="/posts-:prfid" component={Post}/>
       <Route path="/comments-:prfid-:pstid" component={Comment}/>
-      <Route path="/messages" component={Msg}/>
+      <Route path="/messages-:prfid" component={Msg}/>
     </div>
   </Router>
     );

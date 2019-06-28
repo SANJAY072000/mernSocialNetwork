@@ -56,7 +56,7 @@ class Pl extends Component{
         <Link to={`/posts-${this.props.profile._id}`} className="btn btn-outline-warning btn-block mr-3">
         <i className="fa fa-telegram" aria-hidden="true"></i>  View Posts
         </Link>
-        <Link to="/messages" className="btn btn-outline-danger btn-block">
+        <Link to={`/messages-${this.props.profile._id}`} className="btn btn-outline-danger btn-block">
         <i className="fa fa-envelope-open-o" aria-hidden="true"></i>  Send Messages
         </Link>
         </div>

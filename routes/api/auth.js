@@ -12,7 +12,11 @@ client = require('twilio')(accountSid, authToken);
 
 
 // fetching all the schemas
-const Person=require('../../models/Person');
+const Person=require('../../models/Person'),
+Profile=require('../../models/Profile'),
+Post=require('../../models/Post'),
+Message=require('../../models/Message');
+
 
 
 /*
@@ -159,8 +163,29 @@ router.post('/chglogin',passport.authenticate('jwt',{session:false}),(req,res)=>
 });
 
 
-
-
+/*
+@type - DELETE
+@route - /api/auth/del
+@desc - a route to change login credentials of the user
+@access - PRIVATE
+*/
+router.delete('/del',passport.authenticate('jwt',{session:false}),(req,res)=>{
+Message.findOneAndRemove({user:req.user._id})
+       .then(()=>{
+         Post.findOneAndRemove({user:req.user._id})
+             .then(()=>{
+               Profile.findOneAndRemove({user:req.user._id})
+                      .then(()=>{
+                        Person.findOneAndRemove({_id:req.user._id})
+                              .then(()=>res.status(200).json({deleted:'Account deleted successfully'}))
+                              .catch(err=>console.log(err));
+                      })
+                      .catch(err=>console.log(err));
+             })
+             .catch(err=>console.log(err));
+       })
+       .catch(err=>console.log(err));
+});
 
 
 

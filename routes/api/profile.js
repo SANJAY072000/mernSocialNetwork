@@ -26,6 +26,19 @@ var upload=multer({storage:storage}).single('pic');
 
 /*
 @type - GET
+@route - /api/profile/
+@desc - a route to get the profile of the user
+@access - PRIVATE
+*/
+router.get('/',passport.authenticate('jwt',{session:false}),(req,res)=>{
+Profile.findOne({user:req.user._id})
+       .then(profile=>res.status(200).json(profile))
+       .catch(err=>console.log(err));
+});
+
+
+/*
+@type - GET
 @route - /api/profile/dashboard
 @desc - a route to reach the dashboard of the user
 @access - PRIVATE
