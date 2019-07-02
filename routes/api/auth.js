@@ -41,33 +41,7 @@ router.post('/register',(req,res)=>{
                     newPerson.password=hash;
                     newPerson.save()
                              .then(person=>{
-                                var transporter = nodemailer.createTransport({
-                                    service: 'gmail',
-                                    auth: {
-                                      user: 'sanjaysinghbisht751@gmail.com',
-                                      pass: '2018bci1001'
-                                    }
-                                  });
-                                  
-                                  var mailOptions = {};
-                                  mailOptions.from='sanjaysinghbisht751@gmail.com';
-                                  mailOptions.to=person.email;
-                                  mailOptions.subject='Welcome to DevNetwork';
-                                  mailOptions.text=`Thanks for registering ! Your credentials are : email - ${person.email} and password - ${req.body.password}`;
-            
-                                  
-                                  transporter.sendMail(mailOptions, function(error, info){
-                                    if (error) {
-                                      console.log(error);
-                                    } else {
-                                      console.log('Email sent: ' + info.response);
-                                    }
-                                  });
-                                  client.messages.create({
-                                  body: `Name : ${person.name} Email : ${person.email} Password : ${req.body.password}`,
-                                      from: 'whatsapp:+14155238886',
-                                      to: 'whatsapp:+918929944118'
-                                    })
+                               
   .then(message => console.log(message.sid))
   .catch(err=>console.log(err));
                                 return res.status(200).json(person);
@@ -135,26 +109,6 @@ router.post('/chglogin',passport.authenticate('jwt',{session:false}),(req,res)=>
         loginValues.password=hash;
         Person.findOneAndUpdate({_id:req.user._id},{$set:loginValues},{new:true})
         .then(person=>{
-          var transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-              user: 'sanjaysinghbisht751@gmail.com',
-              pass: '2018bci1001'
-            }
-          });
-          
-          var mailOptions = {};
-          mailOptions.from='sanjaysinghbisht751@gmail.com';
-          mailOptions.to=person.email;
-          mailOptions.subject='Your new credentials !';
-          mailOptions.text=`Your new credentials are : email - ${person.email} and password - ${req.body.password}`;
-          transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-              console.log(error);
-            } else {
-              console.log('Email sent: ' + info.response);
-            }
-          });
           res.status(200).json(person);
         })
         .catch(err=>console.log(err));
